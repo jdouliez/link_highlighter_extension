@@ -4,7 +4,7 @@ Chrome extension to highlight SEO useful html links
 ## Description
 This extension adds a border around "nofollow" and "external" links in the page.
 It is usefull to analyse SEO of sites.
-![](sample.png)
+![](images/sample.png)
 
 ## Setup
 This extension is not published on Google Web Store.
