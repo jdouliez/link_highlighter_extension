@@ -1,0 +1,32 @@
+/* 
+Adds borders around links
+Makes links blinking 
+The script is injected after the dom ends loading
+*/
+
+@keyframes blinker {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+a[rel="nofollow"] {
+	border: dashed 3px lightgreen !important;
+    padding: 5px !important;
+    animation: blinker 2s infinite;
+}
+
+a[rel="external"] {
+	border: dashed 3px lightyellow !important;
+    padding: 5px !important;
+    animation: blinker 2s infinite;
+}
