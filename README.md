@@ -8,7 +8,7 @@ It is usefull to analyse SEO of sites.
 
 ## Setup
 This extension is not published on Google Web Store.
-To use it, go to ```chrome://extensions``` and add source files with the "Load the unpackaged extension" button.
+To use it, go to ```chrome://extensions``` and either add source files with the "Load the unpackaged extension" button or drag and drop the .crx file from ```bin``` directory.
 
 ## Todo
 * Create the options's page to modify CSS applied on links types
