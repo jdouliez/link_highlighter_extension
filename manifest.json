@@ -12,7 +12,8 @@
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "css":      ["content.css"],
-        "js":      ["content.js"]        
+        "js":      ["content.js"],
+        "run_at": "document_end"        
     }],
     "browser_action": {
    		"default_icon": "images/icons8-lien-cloud-32.png",

@@ -19,14 +19,23 @@ The script is injected after the dom ends loading
   }
 }
 
-a[rel="nofollow"] {
-	border: dashed 3px lightgreen !important;
-    padding: 5px !important;
-    animation: blinker 2s infinite;
+
+.externalLink {
+  border: solid 3px red !important;
+  padding: 5px !important;
+  animation: blinker 2s infinite;
 }
 
-a[rel="external"] {
-	border: dashed 3px lightyellow !important;
-    padding: 5px !important;
-    animation: blinker 2s infinite;
+.internalLink {
+  border: solid 3px green !important;
+  padding: 5px !important;
+  animation: blinker 2s infinite;
+}
+
+a[rel="nofollow"].externalLink {
+  border: dashed 3px red !important;
+}
+
+a[rel="nofollow"].internalLink {
+  border: dashed 3px green !important;
 }

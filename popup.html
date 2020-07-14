@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="min-width:300px;min-height:320px;">
+<html style="min-width:300px;min-height:350px;">
   <head>
   	<style>
 		.footer {
@@ -98,13 +98,24 @@
 	</div>
 
 	<div style="font-size: 18px; vertical-align: middle;">
-    	<p style="margin-top: 25px">
+    	<p>
     		<ul id="tree">
 			  <li><span class="caret">Links</span>
 			    <ul class="nested active">
-			      <li><span class="caret">All : <span id="allLinks">N/A</span></li>
-			      <li><span class="caret">Nofollow : <span id="nofollowLinks">N/A</span></li>			      
-			      <li><span class="caret">External : <span id="externalLinks">N/A</span></li>			      
+			      <li><span class="caret">All : <span id="allLinks">N/A</span>
+			      	<ul class="nested active">
+			      		<li><span class="caret">External : <span id="externalLinks">N/A</span>
+				      	<ul class="nested active">
+				      		<li><span class="caret">Nofollow : <span id="noFollowAndExternalLinks">N/A</span></li>
+				      	</ul>
+				      </li>
+				      <li><span class="caret">Internal : <span id="internalLinks">N/A</span>
+						<ul class="nested active">
+				      		<li><span class="caret">Nofollow : <span id="noFollowAndInternalLinks">N/A</span></li>
+				      	</ul>
+				      </li>
+			      	</ul>
+			      </li>			      			    			      			      
 			    </ul>
 			  </li>
 			</ul>    		

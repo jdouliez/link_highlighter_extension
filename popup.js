@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', function(){
 document.getElementById('go-to-options').addEventListener('click', function(){ 
 	  if (chrome.runtime.openOptionsPage) {
 	    chrome.runtime.openOptionsPage();
-	  } else {
+	  } 
+	  else {
 	    window.open(chrome.runtime.getURL('options.html'));
 	  }
 }, false);
@@ -30,9 +31,11 @@ document.getElementById('go-to-options').addEventListener('click', function(){
 	Get data from content script running on page
 **/
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {type:"getDomInfo"}, function(response){    	
+    chrome.tabs.sendMessage(tabs[0].id, {type:"getDomInfo"}, function(response){   
         document.getElementById('allLinks').innerHTML = response['allLinksCount'];        
-        document.getElementById('nofollowLinks').innerHTML = response['nofollowLinksCount'];        
-        document.getElementById('externalLinks').innerHTML = response['externalLinksCount'];        
+        document.getElementById('noFollowAndInternalLinks').innerHTML = response['noFollowAndInternalLinksCount'];
+        document.getElementById('noFollowAndExternalLinks').innerHTML = response['noFollowAndExternalLinksCount'];        
+        document.getElementById('externalLinks').innerHTML = response['externalLinksCount']; 
+        document.getElementById('internalLinks').innerHTML = response['internalLinksCount'];           
     });
 });
