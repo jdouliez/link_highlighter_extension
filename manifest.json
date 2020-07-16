@@ -18,8 +18,7 @@
     "browser_action": {
    		"default_icon": "images/icons8-lien-cloud-32.png",
    		"default_popup": "popup.html"
-    },
-    "options_page": "options.html",
+    },    
     "icons": {
         "16": "images/icons8-lien-cloud-16.png",
         "32": "images/icons8-lien-cloud-32.png",
