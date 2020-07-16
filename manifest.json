@@ -5,10 +5,6 @@
 	"offline_enabled": true,
 	"description" :"Html links highlighter.",
 	"permissions": ["tabs", "activeTab", "http://*/*","https://*/*", "declarativeContent", "storage"],
-    "background": {
-        "persistent": false,
-        "scripts": ["background.js"]
-    },
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "css":      ["content.css"],

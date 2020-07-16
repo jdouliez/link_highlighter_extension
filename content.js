@@ -1,7 +1,6 @@
-/* 
-Processes requests using page's dom
-*/
-
+/**
+    Get DOM information
+**/
 function getLinksCount() {
    
     var countExternal = 0;
@@ -60,21 +59,34 @@ function getLinksCount() {
            };
 }
 
+/**
+    Communication mecanism between popup and DOM
+**/
 chrome.runtime.onMessage.addListener(
     function(message, sender, sendResponse) {
 
         switch(message.type) {
             case "getDomInfo":                                           
                 result = getLinksCount();
+                sendResponse(result);
+                break; 
+
+            case "enableExtension":                                           
+                enableExtension();
                 break;                
-        }        
-        
-        sendResponse(result);
+            
+            case "disableExtension":                                           
+                disableExtension();
+                break;                
+        }                       
     }
 );
 
-//Run after 1 sec to avoid normal js activity on links
-setTimeout(function() { 
+/**
+    Enable extension and mark link type over DOM
+**/
+function enableExtension(){
+    
     var links = document.getElementsByTagName("a");
 
     for(var i=0; i<links.length; i++) {
@@ -92,4 +104,43 @@ setTimeout(function() {
             }
         }
     }
+}
+
+/**
+    Disable extension and set DOM back to initial state
+**/
+function disableExtension(){
+    
+    var internalLinks = document.getElementsByClassName("internalLink");
+
+    while (internalLinks.length > 0) {
+        for(var j=0; j<internalLinks.length; j++) {
+            internalLinks[j].className = internalLinks[j].className.replace(/\binternalLink\b/g, "");          
+        }
+
+        internalLinks = document.getElementsByClassName("internalLink");
+    }
+
+
+    var externalLinks = document.getElementsByClassName("externalLink");
+    
+    while (externalLinks.length > 0) {
+        for(var k=0; k<externalLinks.length; k++) {
+            externalLinks[k].className = externalLinks[k].className.replace(/\bexternalLink\b/g, "");          
+        }
+
+        externalLinks = document.getElementsByClassName("externalLink");
+    } 
+}
+
+//Run after 1 sec to avoid normal js activity on links
+setTimeout(function() { 
+    chrome.storage.sync.get("isEnabled", function(items) {
+        if(items.isEnabled) {
+            enableExtension();
+        }   
+        else {
+            disableExtension();
+        }     
+    });    
 }, 1000);

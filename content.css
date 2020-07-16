@@ -1,8 +1,10 @@
 /* 
-Adds borders around links
-Makes links blinking 
-The script is injected after the dom ends loading
+  Adds borders around links
+  Makes links blinking 
+  The script is injected after the dom ends loading
 */
+
+
 
 @keyframes blinker {
   0% {

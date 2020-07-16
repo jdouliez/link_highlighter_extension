@@ -13,8 +13,11 @@ To use it, go to ```chrome://extensions``` and either add source files with the 
 
 ## Todo
 * Create the options's page to modify CSS applied on links types
-* Add an ON/OFF option to disable extension on the fly
-* [BUG] Make only the border blinking and not all the link html tag content
+* Add individual activation switch for links types
+* Add blinking activation option 
+
+## Known bugs
+* Make only the border blinking and not all the link html tag content
 
 ## Credit
 Developed by Jordan Douliez
