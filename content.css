@@ -25,12 +25,14 @@
 .externalLink {
   border: solid 3px red !important;
   padding: 5px !important;
-  animation: blinker 2s infinite;
 }
 
 .internalLink {
   border: solid 3px green !important;
   padding: 5px !important;
+}
+
+.flashingLink {
   animation: blinker 2s infinite;
 }
 

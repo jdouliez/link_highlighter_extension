@@ -1,2 +1,41 @@
-<h1 style="text-align: center; font-size: 48px">In construction</h1>
-<img style="width: 100%" src="https://www.ville-martignas.fr/medias/2018/10/Travaux.jpg" />
+<!DOCTYPE html>
+<html style="min-width:300px;min-height:200px;">
+  <head>
+  	<link rel="stylesheet" type="text/css" href="options.css">
+  </head>
+
+  <body>
+	<div class="container">
+
+		<p>Link Highlighter Extension's Settings</p>
+
+		<h2>Global</h2>
+
+		<div>
+		  <input type="checkbox" id="flashingMode" name="flashingMode" checked>
+		  <label for="flashingMode" title="Make links flashing indefinitely">&nbsp;&nbsp;Flashing mode</label>
+		</div>
+
+
+		<h2 style="margin-top: 35px">Link Types</h2>
+
+		<div>
+		  <input type="checkbox" id="internalLinksType" name="internalLinksType" checked>
+		  <label for="internalLinksType" title="Add a border around internal links on page">&nbsp;&nbsp;Display internal links (with <span style="color:green">green</span> border)</label>
+		</div>
+
+		<div>
+		  <input type="checkbox" id="externalLinksType" name="externalLinksType" checked>
+		  <label for="externalLinksType" title="Add a border around external links on page">&nbsp;&nbsp;Display external links (with <span style="color:red">red</span> border)</label>
+		</div>
+
+		<h2 style="margin-top: 35px">Tips</h2>
+		<p style="font-size: 20px; text-decoration: none;">Nofollow links are displayed with dashed borders</p>
+
+	</div>
+
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript" src="options.js"></script>
+	
+  </body>
+</html>

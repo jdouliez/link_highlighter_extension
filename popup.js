@@ -69,7 +69,6 @@ function refreshPopupInfo() {
 /** 
 	Add click event listener for option page opening
 **/
-/**
 document.getElementById('go-to-options').addEventListener('click', function(){ 
 	  if (chrome.runtime.openOptionsPage) {
 	    chrome.runtime.openOptionsPage();
@@ -78,4 +77,3 @@ document.getElementById('go-to-options').addEventListener('click', function(){
 	    window.open(chrome.runtime.getURL('options.html'));
 	  }
 }, false);
-**/

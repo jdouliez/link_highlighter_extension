@@ -1,16 +1,17 @@
 {
 	"name" :"Links Highlighter",
 	"manifest_version": 2,
-	"version": "1.1",
+	"version": "1.2",
 	"offline_enabled": true,
 	"description" :"Html links highlighter.",
 	"permissions": ["tabs", "activeTab", "http://*/*","https://*/*", "declarativeContent", "storage"],
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "css":      ["content.css"],
-        "js":      ["content.js"],
+        "js":      ["content.js", "common.js"],
         "run_at": "document_end"        
     }],
+    "options_page": "options.html",
     "browser_action": {
    		"default_icon": "images/icons8-lien-cloud-32.png",
    		"default_popup": "popup.html"

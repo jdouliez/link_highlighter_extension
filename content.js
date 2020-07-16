@@ -86,24 +86,51 @@ chrome.runtime.onMessage.addListener(
     Enable extension and mark link type over DOM
 **/
 function enableExtension(){
-    
-    var links = document.getElementsByTagName("a");
+      
+    getAllSettings(function(data){
+        
+        var flashingModeActivated = data['flashingMode'];
+        var externalLinksTypeActivated = data['externalLinksType'];
+        var internalLinksTypeActivated = data['internalLinksType'];
 
-    for(var i=0; i<links.length; i++) {
-        if (links[i].href != undefined && links[i].href != "") {
-            var url = new URL(links[i].href);
-            
-            //Process external links
-            if (url.protocol.startsWith("http") && url.hostname != location.hostname ) {        
-                links[i].classList.add("externalLink");          
-            }
+        if (flashingModeActivated == undefined) {
+            flashingModeActivated = true;
+        }
 
-            //Process internal links
-            else if (url.protocol.startsWith("http") && url.hostname == location.hostname ) {        
-                links[i].classList.add("internalLink");          
+        if (externalLinksTypeActivated == undefined) {
+            externalLinksTypeActivated = true;
+        }
+
+        if (internalLinksTypeActivated == undefined) {
+            internalLinksTypeActivated = true;
+        }
+
+        var links = document.getElementsByTagName("a");
+
+        for (var i=0; i<links.length; i++) {
+            if (links[i].href != undefined && links[i].href != "") {
+                var url = new URL(links[i].href);
+                
+                //Process external links
+                if (url.protocol.startsWith("http") && url.hostname != location.hostname && externalLinksTypeActivated) {        
+                    links[i].classList.add("externalLink");  
+
+                    if (flashingModeActivated) {
+                        links[i].classList.add("flashingLink");  
+                    }       
+                }
+
+                //Process internal links
+                if (url.protocol.startsWith("http") && url.hostname == location.hostname && internalLinksTypeActivated) {        
+                    links[i].classList.add("internalLink");  
+
+                    if (flashingModeActivated) {
+                        links[i].classList.add("flashingLink");  
+                    }         
+                }
             }
         }
-    }
+    });
 }
 
 /**
@@ -130,6 +157,16 @@ function disableExtension(){
         }
 
         externalLinks = document.getElementsByClassName("externalLink");
+    } 
+
+    var flashingLinks = document.getElementsByClassName("flashingLink");
+    
+    while (flashingLinks.length > 0) {
+        for(var l=0; l<flashingLinks.length; l++) {
+            flashingLinks[l].className = flashingLinks[l].className.replace(/\bexternalLink\b/g, "");          
+        }
+
+        flashingLinks = document.getElementsByClassName("flashingLink");
     } 
 }
 

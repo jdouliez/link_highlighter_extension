@@ -12,9 +12,7 @@ This extension is not published on Google Web Store.<br/>
 To use it, go to ```chrome://extensions``` and either add source files with the "Load the unpackaged extension" button or drag and drop the .crx file from ```bin``` directory.
 
 ## Todo
-* Create the options's page to modify CSS applied on links types
-* Add individual activation switch for links types
-* Add blinking activation option 
+* Let the user set his own css to apply on links
 
 ## Known bugs
 * Make only the border blinking and not all the link html tag content
