@@ -78,7 +78,7 @@ chrome.runtime.onMessage.addListener(
             case "disableExtension":                                           
                 disableExtension();
                 break;                
-        }                       
+        }                     
     }
 );
 
@@ -163,7 +163,7 @@ function disableExtension(){
     
     while (flashingLinks.length > 0) {
         for(var l=0; l<flashingLinks.length; l++) {
-            flashingLinks[l].className = flashingLinks[l].className.replace(/\bexternalLink\b/g, "");          
+            flashingLinks[l].className = flashingLinks[l].className.replace(/\bflashingLink\b/g, "");          
         }
 
         flashingLinks = document.getElementsByClassName("flashingLink");
