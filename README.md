@@ -1,4 +1,4 @@
-# link_highlighter_extention
+# link_highlighter_extension
 Chrome extension to highlight SEO useful html links
 
 ## Description
