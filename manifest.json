@@ -1,7 +1,7 @@
 {
 	"name" :"Links Highlighter",
 	"manifest_version": 2,
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"offline_enabled": true,
 	"description" :"Html links highlighter.",
 	"permissions": ["tabs", "activeTab", "http://*/*","https://*/*", "declarativeContent", "storage"],
