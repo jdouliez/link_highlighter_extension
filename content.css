@@ -36,10 +36,10 @@
   animation: blinker 2s infinite;
 }
 
-a[rel="nofollow"].externalLink {
+a[rel~="nofollow"].externalLink {
   border: dashed 3px red !important;
 }
 
-a[rel="nofollow"].internalLink {
+a[rel~="nofollow"].internalLink {
   border: dashed 3px green !important;
 }
