@@ -23,13 +23,11 @@
 
 
 .externalLink {
-  border: solid 3px red !important;
-  padding: 5px !important;
+  outline: 2px solid red !important;
 }
 
 .internalLink {
-  border: solid 3px green !important;
-  padding: 5px !important;
+  outline: 2px solid green !important;
 }
 
 .flashingLink {
@@ -37,9 +35,9 @@
 }
 
 a[rel~="nofollow"].externalLink {
-  border: dashed 3px red !important;
+  outline: 2px dashed red !important;
 }
 
 a[rel~="nofollow"].internalLink {
-  border: dashed 3px green !important;
+  outline: 2px dashed green !important;
 }
