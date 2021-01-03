@@ -82,16 +82,20 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
+let flashingModeActivated;
+let externalLinksTypeActivated;
+let internalLinksTypeActivated;
+
 /**
     Enable extension and mark link type over DOM
 **/
 function enableExtension(){
       
     getAllSettings(function(data){
-        
-        var flashingModeActivated = data['flashingMode'];
-        var externalLinksTypeActivated = data['externalLinksType'];
-        var internalLinksTypeActivated = data['internalLinksType'];
+
+        flashingModeActivated = data['flashingMode'];
+        externalLinksTypeActivated = data['externalLinksType'];
+        internalLinksTypeActivated = data['internalLinksType'];
 
         if (flashingModeActivated == undefined) {
             flashingModeActivated = true;
@@ -105,32 +109,48 @@ function enableExtension(){
             internalLinksTypeActivated = true;
         }
 
-        var links = document.getElementsByTagName("a");
+        let links = document.getElementsByTagName("a");
 
-        for (var i=0; i<links.length; i++) {
-            if (links[i].href != undefined && links[i].href != "") {
-                var url = new URL(links[i].href);
-                
-                //Process external links
-                if (url.protocol.startsWith("http") && url.hostname != location.hostname && externalLinksTypeActivated) {        
-                    links[i].classList.add("externalLink");  
+        for (let i=0; i<links.length; i++) {
 
-                    if (flashingModeActivated) {
-                        links[i].classList.add("flashingLink");  
-                    }       
+            let href = links[i].href;
+            let onclick = links[i].getAttribute("onclick");
+
+            if (href != undefined && href != "") {
+                let url = new URL(href);
+                processLink(url, links[i])
+            }
+            else if (onclick != undefined && onclick != ""){
+                if (onclick.includes("location.href=")) {
+                    let url = new URL(onclick.replace("javascript:", "").split('location.href=')[1].replace("'", "").replace('"', ''));
+                    processLink(url, links[i]);
                 }
-
-                //Process internal links
-                if (url.protocol.startsWith("http") && url.hostname == location.hostname && internalLinksTypeActivated) {        
-                    links[i].classList.add("internalLink");  
-
-                    if (flashingModeActivated) {
-                        links[i].classList.add("flashingLink");  
-                    }         
-                }
+            }
+            else {
+                // console.log(links[i]);
             }
         }
     });
+}
+
+function processLink(url, element) {
+    //Process external links
+    if (url.protocol.startsWith("http") && url.hostname != location.hostname && externalLinksTypeActivated) {
+        element.classList.add("externalLink");
+
+        if (flashingModeActivated) {
+            element.classList.add("flashingLink");
+        }
+    }
+
+    //Process internal links
+    if (url.protocol.startsWith("http") && url.hostname == location.hostname && internalLinksTypeActivated) {
+        element.classList.add("internalLink");
+
+        if (flashingModeActivated) {
+            element.classList.add("flashingLink");
+        }
+    }
 }
 
 /**
